@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Warm Woods Books</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <h1 class="site-title">Warm Woods Books</h1>
+            <p class="tag">Cozy picks, curated for slow reading</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="controls">
+            <input id="search" type="search" placeholder="Search by title or author" aria-label="Search books">
+        </section>
+
+        <section id="books" class="book-grid" aria-live="polite">
+            <!-- Cards inserted by script.js -->
+        </section>
+    </main>
+
+    <div id="modal" class="modal" aria-hidden="true">
+        <div class="modal-backdrop" id="modal-backdrop"></div>
+        <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <button id="modal-close" class="modal-close" aria-label="Close">✕</button>
+            <div class="modal-cover" id="modal-cover"></div>
+            <div class="modal-body">
+                <h2 id="modal-title"></h2>
+                <p class="modal-author" id="modal-author"></p>
+                <p id="modal-desc"></p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>© <span id="year"></span> Warm Woods Books — Made with quiet corners and good light.</p>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

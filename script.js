@@ -1,0 +1,100 @@
+/*
+	To add cover images:
+	- Place image files in the `images/` folder.
+	- Set the `cover` property below to the relative path (e.g. "images/hearthside.jpg").
+	- If no `cover` is provided, a gradient is used based on `tone`.
+*/
+const books = [
+	{id:1,title:"Hearthside Stories",author:"Anya Rowe",desc:"Short contemplative tales for tea and woolen socks.",tone:"earth",cover:"images/hearthside.jpg"},
+	{id:2,title:"The Slow Page",author:"M. Calder",desc:"An essay collection on reading as a daily ritual.",tone:"tan",cover:"images/slowpage.jpg"},
+	{id:3,title:"Timber & Ink",author:"R. Sato",desc:"A novelist examines craftsmanship, memory, and small towns.",tone:"dark",cover:"images/timber.jpg"},
+	{id:4,title:"Cabin Light",author:"I. Morales",desc:"A lyrical novel about returning home and rebuilding.",tone:"amber",cover:"images/cabinlight.jpg"},
+	{id:5,title:"Under the Oak",author:"S. Patel",desc:"Poems about seasons, kitchens, and family recipes.",tone:"sepia",cover:"images/under_oak.jpg"},
+	{id:6,title:"Woodbound",author:"J. Greene",desc:"A gentle mystery that favors mood over plot.",tone:"chestnut",cover:"images/woodbound.jpg"}
+];
+
+const coverColors = {
+	earth:['#6b4226','#a16d4a'],
+	tan:['#8b5e34','#d6b08a'],
+	dark:['#2b1f17','#6d4a3b'],
+	amber:['#9b5f2a','#e0b07a'],
+	sepia:['#7b4c2f','#c9a57f'],
+	chestnut:['#5a351f','#b57a57']
+};
+
+const booksEl = document.getElementById('books');
+const searchEl = document.getElementById('search');
+const modal = document.getElementById('modal');
+const modalBackdrop = document.getElementById('modal-backdrop');
+const modalClose = document.getElementById('modal-close');
+const modalTitle = document.getElementById('modal-title');
+const modalAuthor = document.getElementById('modal-author');
+const modalDesc = document.getElementById('modal-desc');
+const modalCover = document.getElementById('modal-cover');
+
+function renderGrid(list){
+	booksEl.innerHTML = '';
+	list.forEach(b=>{
+		const card = document.createElement('article');
+		card.className = 'book-card';
+		card.tabIndex = 0;
+
+		const cover = document.createElement('div');
+		cover.className = 'cover';
+		const colors = coverColors[b.tone] || ['#7a4b2a','#caa585'];
+		// use gradient base and optionally a cover image on top
+		let bg = `linear-gradient(180deg, ${colors[0]}, ${colors[1]})`;
+		if(b.cover){
+			cover.style.backgroundImage = `${bg}, url("${b.cover}")`;
+			cover.style.backgroundSize = 'cover';
+			cover.style.backgroundPosition = 'center';
+		} else {
+			cover.style.background = bg;
+		}
+		cover.innerHTML = `<span class="cover-title">${b.title.split(' ').slice(0,2).join(' ')}</span>`;
+
+		const info = document.createElement('div');
+		info.className = 'book-info';
+		info.innerHTML = `<h3 class="title">${b.title}</h3><p class="author">${b.author}</p><p class="excerpt">${b.desc}</p>`;
+
+		card.appendChild(cover);
+		card.appendChild(info);
+		card.addEventListener('click',()=>openModal(b));
+		card.addEventListener('keydown',e=>{if(e.key === 'Enter') openModal(b)});
+		booksEl.appendChild(card);
+	});
+}
+
+function openModal(book){
+	modal.setAttribute('aria-hidden','false');
+	modalTitle.textContent = book.title;
+	modalAuthor.textContent = book.author;
+	modalDesc.textContent = book.desc;
+	const colors = coverColors[book.tone] || ['#7a4b2a','#caa585'];
+	let bg = `linear-gradient(180deg, ${colors[0]}, ${colors[1]})`;
+	if(book.cover){
+		modalCover.style.backgroundImage = `${bg}, url("${book.cover}")`;
+		modalCover.style.backgroundSize = 'cover';
+		modalCover.style.backgroundPosition = 'center';
+	} else {
+		modalCover.style.background = bg;
+	}
+}
+
+function closeModal(){
+	modal.setAttribute('aria-hidden','true');
+}
+
+modalBackdrop.addEventListener('click',closeModal);
+modalClose.addEventListener('click',closeModal);
+document.addEventListener('keydown',e=>{if(e.key==='Escape') closeModal();});
+
+searchEl.addEventListener('input', ()=>{
+	const q = searchEl.value.trim().toLowerCase();
+	if(!q) return renderGrid(books);
+	const filtered = books.filter(b=> (b.title + ' ' + b.author).toLowerCase().includes(q));
+	renderGrid(filtered);
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+renderGrid(books);
