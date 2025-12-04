@@ -52,13 +52,12 @@ function renderGrid(list){
 		const cover = document.createElement('div');
 		cover.className = 'cover';
 		const colors = coverColors[b.tone] || ['#7a4b2a','#caa585'];
-		// use gradient base and optionally a cover image on top
-		let bg = `linear-gradient(180deg, ${colors[0]}, ${colors[1]})`;
 		if(b.cover){
-			cover.style.backgroundImage = `${bg}, url("${b.cover}")`;
+			cover.style.backgroundImage = `url("${b.cover}")`;
 			cover.style.backgroundSize = 'cover';
 			cover.style.backgroundPosition = 'center';
 		} else {
+			let bg = `linear-gradient(180deg, ${colors[0]}, ${colors[1]})`;
 			cover.style.background = bg;
 		}
 		cover.innerHTML = `<span class="cover-title">${b.title.split(' ').slice(0,2).join(' ')}</span>`;
@@ -81,12 +80,12 @@ function openModal(book){
 	modalAuthor.textContent = book.author;
 	modalDesc.textContent = book.desc;
 	const colors = coverColors[book.tone] || ['#7a4b2a','#caa585'];
-	let bg = `linear-gradient(180deg, ${colors[0]}, ${colors[1]})`;
 	if(book.cover){
-		modalCover.style.backgroundImage = `${bg}, url("${book.cover}")`;
+		modalCover.style.backgroundImage = `url("${book.cover}")`;
 		modalCover.style.backgroundSize = 'cover';
 		modalCover.style.backgroundPosition = 'center';
 	} else {
+		let bg = `linear-gradient(180deg, ${colors[0]}, ${colors[1]})`;
 		modalCover.style.background = bg;
 	}
 	
