@@ -92,6 +92,8 @@ function openModal(book){
 	
 	// Add or remove Amazon button
 	let amazonBtn = document.getElementById('amazon-button');
+	const bookDetails = document.querySelector('.book-details') || document.querySelector('.modal-body');
+	
 	if(book.amazonUrl){
 		if(!amazonBtn){
 			amazonBtn = document.createElement('a');
@@ -99,11 +101,11 @@ function openModal(book){
 			amazonBtn.className = 'amazon-btn';
 			amazonBtn.target = '_blank';
 			amazonBtn.rel = 'noopener noreferrer';
-			document.querySelector('.modal-body').appendChild(amazonBtn);
+			bookDetails.appendChild(amazonBtn);
 		}
 		amazonBtn.href = book.amazonUrl;
 		amazonBtn.innerHTML = '📚 View on Amazon';
-		amazonBtn.style.display = 'inline-block';
+		amazonBtn.style.display = 'inline-flex';
 	} else if(amazonBtn){
 		amazonBtn.style.display = 'none';
 	}
