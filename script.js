@@ -6,7 +6,7 @@
 */
 const books = [
 	{id:1,title:"The X Over",author:"Natasha Garry",desc:"Two women with different backgrounds cross paths, as they attempt to maintain their co-existence in one person's life. A raving novel that will keep you on the edge of your seat.",tone:"earth",cover:"https://m.media-amazon.com/images/I/81-y0xDViuL._SY342_.jpg",amazonUrl:"https://www.amazon.com/dp/B08S3FRG2R?ref=cm_sw_r_ffobk_cso_em_apan_dp_4T76G2M68281WNEW0P8F"},
-	{id:2,title:"The Slow Page",author:"M. Calder",desc:"An essay collection on reading as a daily ritual.",tone:"tan",cover:"images/slowpage.jpg"},
+	{id:2,title:"O.L.I.L.: Finding Myself",author:"Natasha Garry",desc:"A woman's journey to giving up on loving others who didn't love her back and learning to love herself. Overcoming heartache, pain, and obstacles while growing closer to God.",tone:"tan",cover:"https://m.media-amazon.com/images/I/61-ZDmH+GYL._SY342_.jpg",amazonUrl:"https://www.amazon.com/dp/B0C1JD76PK?ref=cm_sw_r_ffobk_cso_em_apan_dp_Z4FJZ23BYDC6ZBD7WC78"},
 	{id:3,title:"Timber & Ink",author:"R. Sato",desc:"A novelist examines craftsmanship, memory, and small towns.",tone:"dark",cover:"images/timber.jpg"},
 	{id:4,title:"Cabin Light",author:"I. Morales",desc:"A lyrical novel about returning home and rebuilding.",tone:"amber",cover:"images/cabinlight.jpg"},
 	{id:5,title:"Under the Oak",author:"S. Patel",desc:"Poems about seasons, kitchens, and family recipes.",tone:"sepia",cover:"images/under_oak.jpg"},
