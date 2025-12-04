@@ -7,42 +7,72 @@
     <title>Natasha Garry - Author</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <header class="site-header">
-        <div class="container header-inner">
+    <!-- Loft Background Elements -->
+    <div class="loft-bg">
+        <div class="concrete-wall"></div>
+        <div class="exposed-brick"></div>
+    </div>
+
+    <!-- Navigation - Loft Zones -->
+    <nav class="loft-nav">
+        <div class="nav-brand">
             <h1 class="site-title">Natasha Garry</h1>
             <p class="tag">Stories of faith, love, and transformation</p>
         </div>
-    </header>
+        <div class="nav-zones">
+            <button class="zone-btn active" data-zone="library">
+                <span class="zone-icon">📚</span>
+                <span class="zone-label">Library</span>
+            </button>
+        </div>
+    </nav>
 
-    <main class="container">
-        <section class="controls">
-            <input id="search" type="search" placeholder="Search by title or author" aria-label="Search books">
-        </section>
-
-        <section id="books" class="book-grid" aria-live="polite">
-            <!-- Cards inserted by script.js -->
+    <!-- Main Loft Space -->
+    <main class="loft-space">
+        <!-- Library Zone -->
+        <section id="library-zone" class="zone active">
+            <div class="zone-header">
+                <h2 class="zone-title">The Library</h2>
+                <div class="search-area">
+                    <input id="search" type="search" placeholder="Search by title or author..." aria-label="Search books">
+                </div>
+            </div>
+            
+            <div class="bookshelf">
+                <div id="books" class="book-collection" aria-live="polite">
+                    <!-- Cards inserted by script.js -->
+                </div>
+            </div>
         </section>
     </main>
 
-    <div id="modal" class="modal" aria-hidden="true">
-        <div class="modal-backdrop" id="modal-backdrop"></div>
-        <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-            <button id="modal-close" class="modal-close" aria-label="Close">✕</button>
-            <div class="modal-cover" id="modal-cover"></div>
-            <div class="modal-body">
-                <h2 id="modal-title"></h2>
-                <p class="modal-author" id="modal-author"></p>
-                <p id="modal-desc"></p>
+    <!-- Book Detail Modal - Reading Nook -->
+    <div id="modal" class="reading-nook" aria-hidden="true">
+        <div class="nook-backdrop" id="modal-backdrop"></div>
+        <div class="nook-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <button id="modal-close" class="nook-close" aria-label="Close">✕</button>
+            <div class="nook-layout">
+                <div class="book-display">
+                    <div class="book-cover-large" id="modal-cover"></div>
+                </div>
+                <div class="book-details">
+                    <h2 id="modal-title" class="book-title-large"></h2>
+                    <p class="book-author-large" id="modal-author"></p>
+                    <div class="book-description">
+                        <p id="modal-desc"></p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <footer class="site-footer">
-        <div class="container footer-inner">
+    <!-- Footer - Loft Credits -->
+    <footer class="loft-footer">
+        <div class="footer-content">
             <p>© <span id="year"></span> Natasha Garry — Inspiring stories of hope and redemption.</p>
         </div>
     </footer>

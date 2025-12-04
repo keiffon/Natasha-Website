@@ -30,6 +30,18 @@ const modalAuthor = document.getElementById('modal-author');
 const modalDesc = document.getElementById('modal-desc');
 const modalCover = document.getElementById('modal-cover');
 
+// Zone navigation
+const zoneBtns = document.querySelectorAll('.zone-btn');
+zoneBtns.forEach(btn => {
+	btn.addEventListener('click', () => {
+		const zone = btn.dataset.zone;
+		document.querySelectorAll('.zone').forEach(z => z.classList.remove('active'));
+		document.getElementById(`${zone}-zone`).classList.add('active');
+		zoneBtns.forEach(b => b.classList.remove('active'));
+		btn.classList.add('active');
+	});
+});
+
 function renderGrid(list){
 	booksEl.innerHTML = '';
 	list.forEach(b=>{
