@@ -5,7 +5,7 @@
 	- If no `cover` is provided, a gradient is used based on `tone`.
 */
 const books = [
-	{id:1,title:"Hearthside Stories",author:"Anya Rowe",desc:"Short contemplative tales for tea and woolen socks.",tone:"earth",cover:"images/hearthside.jpg"},
+	{id:1,title:"The X Over",author:"Natasha Garry",desc:"Two women with different backgrounds cross paths, as they attempt to maintain their co-existence in one person's life. A raving novel that will keep you on the edge of your seat.",tone:"earth",cover:"https://m.media-amazon.com/images/I/81-y0xDViuL._SY342_.jpg",amazonUrl:"https://www.amazon.com/dp/B08S3FRG2R?ref=cm_sw_r_ffobk_cso_em_apan_dp_4T76G2M68281WNEW0P8F"},
 	{id:2,title:"The Slow Page",author:"M. Calder",desc:"An essay collection on reading as a daily ritual.",tone:"tan",cover:"images/slowpage.jpg"},
 	{id:3,title:"Timber & Ink",author:"R. Sato",desc:"A novelist examines craftsmanship, memory, and small towns.",tone:"dark",cover:"images/timber.jpg"},
 	{id:4,title:"Cabin Light",author:"I. Morales",desc:"A lyrical novel about returning home and rebuilding.",tone:"amber",cover:"images/cabinlight.jpg"},
@@ -78,6 +78,24 @@ function openModal(book){
 		modalCover.style.backgroundPosition = 'center';
 	} else {
 		modalCover.style.background = bg;
+	}
+	
+	// Add or remove Amazon button
+	let amazonBtn = document.getElementById('amazon-button');
+	if(book.amazonUrl){
+		if(!amazonBtn){
+			amazonBtn = document.createElement('a');
+			amazonBtn.id = 'amazon-button';
+			amazonBtn.className = 'amazon-btn';
+			amazonBtn.target = '_blank';
+			amazonBtn.rel = 'noopener noreferrer';
+			document.querySelector('.modal-body').appendChild(amazonBtn);
+		}
+		amazonBtn.href = book.amazonUrl;
+		amazonBtn.innerHTML = '📚 View on Amazon';
+		amazonBtn.style.display = 'inline-block';
+	} else if(amazonBtn){
+		amazonBtn.style.display = 'none';
 	}
 }
 

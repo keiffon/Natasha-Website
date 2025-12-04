@@ -41,6 +41,10 @@ body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",
 .modal-close{position:absolute;right:18px;top:12px;background:transparent;border:none;font-size:20px;color:var(--ink);cursor:pointer}
 .modal-author{color:var(--muted);margin-top:6px;margin-bottom:12px}
 
+.amazon-btn{display:inline-block;margin-top:16px;padding:12px 24px;background:linear-gradient(135deg,#FF9900,#FFB14D);color:#111;font-weight:600;text-decoration:none;border-radius:8px;box-shadow:0 4px 12px rgba(255,153,0,0.3);transition:all 0.2s ease;font-size:15px}
+.amazon-btn:hover{background:linear-gradient(135deg,#FFB14D,#FF9900);box-shadow:0 6px 18px rgba(255,153,0,0.5);transform:translateY(-2px)}
+.amazon-btn:active{transform:translateY(0)}
+
 @media (max-width:720px){
 	.modal-panel{flex-direction:column}
 	.modal-cover{width:100%;height:220px}
